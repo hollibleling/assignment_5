@@ -23,3 +23,5 @@ class DevelopeList(models.Model):
     kind = models.ForeignKey(Kind, on_delete=models.DO_NOTHING)
     phase = models.ForeignKey(Phase, on_delete=models.DO_NOTHING)
     scope = models.ForeignKey(Scope, on_delete=models.DO_NOTHING)
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
