@@ -44,7 +44,7 @@
 - 임상 시험   
   
 ## 구현 기능
-### 입금 기능
+### 임상 시험 전체 리스트 출력 기능
 - 입금시 계좌번호, 거래 종류 선택, 금액, 적요를 받아 입금
 - 입력된 계좌번호와 현재 유저의 account_number가 일치해야만 입금 가능
 - 금액 중 음수(-)는 입력 불가능
@@ -73,45 +73,50 @@
 
 ### ENDPOINT
 
-| Method | endpoint | Request Header | Request Body | Remark |
-|:------:|-------------|-----|------|--------|
-|POST|/user||name|회원가입 기능|
-|POST|/token||name, password|로그인 기능|
-|POST|/transaction|access_token|account_number, kind, amount, etc|입, 출금 기능|
-|GET|/transaction/\<int\>|access_token||거래 내역 조회 기능(전체리스트/개별내역)|
-|GET|/transaction?pariod=\<int\>&kind\<str\>|access_token||거래 내역 조회 기능(1,3,7,30,90일 별 + 입/출금)|
-|GET|/transaction?start=\<str\>&end=\<str\>&kind\<str\>|access_token||거래 내역 조회 기능(기간설정 + 입/출금)|
-|GET|/transaction?year=\<str\>&month=\<str\>&kind\<str\>|access_token||거래 내역 조회 기능(특정 년월 별 + 입/출금|
-
+| Method | endpoint | Request Header | Remark |
+|:------:|-------------|-----|--------|
+|GET|/list||임상 시험 전체리스트|
+|GET|/list?department=||특정 진료과 필터|
+|GET|/list?scope||연구 범위 필터|
+|GET|/list?category||연구 종류 필터|
+|GET|/list?institution||연구 책임 기관 필터|
+|GET|/list?phase||임상시험단계 필터|
+|GET|/trials/<int:number>||특정 임상 연구 상세페이지|
 
 
 ## API 명세(request/response)
-  
-  [Postman link](https://documenter.getpostman.com/view/17228945/UVC8CR6n)
+  - 작성 필요
 
 ## 폴더 구조
 ```
-├── company
-│   ├── __init__.py
-│   ├── migrations           
-│   ├── models.py
-│   ├── serializers.py
-│   ├── tests.py
-│   ├── urls.py
-│   └── views.py
-├── db.sqlite3
-├── manage.py
-├── pytest.ini
-├── requirements.txt
-├── README.md
-├── test_app.py
-└── wanted
-    ├── __init__.py
-    ├── asgi.py
-    ├── settings.py
-    ├── urls.py
-    └── wsgi.py
-
+├── humanscape
+│   ├── api
+│   │   ├── __init__.py
+│   │   └── develope
+│   │       ├── __init__.py
+│   │       ├── pagination.py
+│   │       ├── serializers.py
+│   │       └── views.py
+│   ├── app
+│   │   ├── __init__.py
+│   │   └── develope
+│   │       ├── __init__.py
+│   │       └── models.py
+│   ├── crawling.py
+│   ├── db.sqlite3
+│   ├── develope
+│   │   ├── __init__.py
+│   │   ├── admin.py
+│   │   ├── apps.py
+│   │   └── tests.py
+│   ├── humanscape
+│   │   ├── __init__.py
+│   │   ├── asgi.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   └── manage.py
+└── requirements.txt
 
 ```
 
