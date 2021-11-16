@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 from my_settings import SECRET_KEY
 
@@ -142,3 +143,8 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRONJOBS = [
+    # ('*/1 * * * *', 'batchtask.BatchTask', '>> crontap.log'),
+    ('* */1 * * *', 'crawling.BatchTask', f'>> {os.path.join(BASE_DIR, "crontap.log")}'),
+]

@@ -16,12 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework.routers import DefaultRouter
-from api.develope.views import ClinicalViewSet
+from api.develope.views import ClinicalViewSet, ClinicalResearchViewSet
 
 
 route = DefaultRouter(trailing_slash=False)
 route.register('list', ClinicalViewSet, basename='list')
-route.register('trials', ClinicalViewSet, basename='trials')
+route.register('trials', ClinicalResearchViewSet, basename='trials')
 
 urlpatterns = route.urls
 

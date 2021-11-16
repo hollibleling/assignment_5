@@ -1,4 +1,7 @@
+from collections import OrderedDict
+from rest_framework.response import Response
 from rest_framework.pagination import PageNumberPagination
+
 
 class CustomPagination(PageNumberPagination):
     page_size = 10
@@ -16,15 +19,9 @@ class CustomPagination(PageNumberPagination):
     #         return None
     #     page_number = self.page.previous_page_number()
     #     return page_number
-
-    def get_paginated_response_schema(self, schema):
-        return {
-            'type': 'object',
-            'properties': {
-                'count': {
-                    'type': 'integer',
-                    'example': 123,
-                },
-                'results': schema,
-            },
-        }
+    
+    def get_paginated_response(self, data):
+        return Response(OrderedDict([
+            ('count', self.page.paginator.count),
+            ('results', data)
+        ]))

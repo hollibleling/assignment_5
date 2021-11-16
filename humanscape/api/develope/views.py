@@ -1,3 +1,4 @@
+from os import name
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import permission_classes
@@ -42,11 +43,16 @@ class ClinicalViewSet(ListModelMixin, GenericViewSet):
         
         return lists.order_by('updated_at')
 
+class ClinicalResearchViewSet(RetrieveModelMixin, GenericViewSet):
+    queryset = Clinical.objects.all()
+    serializer_class =  ClinicalSerializer
+    permission_classes = [AllowAny]
+    lookup_field = 'number'
+
     def retrieve(self, request, *args, **kwargs):
-        instance = self.get_object(kwargs['name'])
+        instance = self.get_object()
         if instance is None:
             return Response(status=status.HTTP_404_NOT_FOUND)
         
         serializer = ClinicalSerializer(instance)
         return Response(serializer.data, status=status.HTTP_200_OK)
-
