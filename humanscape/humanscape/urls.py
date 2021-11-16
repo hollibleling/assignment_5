@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework.routers import DefaultRouter
+from api.develope.views import ClinicalViewSet
 
-urlpatterns = [
+
+route = DefaultRouter(trailing_slash=False)
+route.register('list', ClinicalViewSet, basename='list')
+route.register('trials', ClinicalViewSet, basename='trials')
+
+urlpatterns = route.urls
+
+urlpatterns += [
     path('admin/', admin.site.urls),
 ]
