@@ -21,13 +21,13 @@ class DevelopeListViewSet(ListModelMixin, RetrieveModelMixin, GenericViewSet):
         title = self.request.query_params.get('title')
 
         date = timezone.now()
-        searched_date = DevelopeList.objects.all()
+        searched_data = DevelopeList.objects.all()
 
         if updated:
             searched_data = DevelopeList.objects.filter(updated_at__range = [(date - timedelta(7)).strftime('%Y-%m-%d'), date.strftime('%Y-%m-%d')])
         if number:
-            searched_date = DevelopeList.objects.filter(number = number)
+            searched_data = DevelopeList.objects.filter(number = number)
         if title:
-            searched_date = DevelopeList.objects.filter(name__icontains = title)
+            searched_data = DevelopeList.objects.filter(name__icontains = title)
         
-        return searched_date
+        return searched_data
