@@ -18,7 +18,7 @@ class ResearchInformationViewset(ListModelMixin, RetrieveModelMixin, GenericView
         if word:
             queryset = self.get_queryset().filter(name__contains = word)
         else:
-            queryset = self.get_queryset().filter(updated_at__range = [datetime.now()-timedelta(weeks=1), datetime.now()])
+            queryset = self.get_queryset().filter(updated_at__range=[datetime.now()-timedelta(weeks=1), datetime.now()])
 
         page = self.paginate_queryset(queryset)
         if page is not None:
