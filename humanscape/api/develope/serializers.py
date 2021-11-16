@@ -6,7 +6,7 @@ class ResearchInformationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ResearchInformation
-        fields = "__all__"
+        fields = ["name", "number", "period", "scope", "kind", "institute", "phase", "subject_number", "department"]
 
     def to_representation(self, instance):
 
