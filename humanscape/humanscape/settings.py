@@ -146,5 +146,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import os
 CRONJOBS = [
     # ('*/1 * * * *', 'batchtask.BatchTask', '>> crontap.log'),
-    ('* */10 * * *', 'batchtask.BatchTask', f'>> {os.path.join(BASE_DIR, "crontap.log")}'),
+    ('*/1 * * * *', 'batchtask.BatchTask', f'>> {os.path.join(BASE_DIR, "crontap.log")}'),
 ]
