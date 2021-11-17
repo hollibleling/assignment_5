@@ -39,10 +39,23 @@
 - **secret key, api key 등을 레포지토리에 올리지 않도록 유의**
     - README.md 에 관련 설명 명시 필요
 ✔️ **API 상세설명**
----   
+---
+
+- 임상 시험   
   
 ## 구현 기능
-### 임상 시험 전체 리스트 출력 기능
+### 임상정보를 수집하는 batch task
+- 참고: https://www.data.go.kr/data/3074271/fileData.do#/API%20%EB%AA%A9%EB%A1%9D/GETuddi%3Acfc19dda-6f75-4c57-86a8-bb9c8b103887
+- OPEN API에 접근하여 데이터를 DB에 저장
+- Crontab을 활용하여 일정 주기 마다 API에 접근하여 업데이트 내역 DB에 반영
+
+### 수집한 임상정보에 대한 API
+- 특정 임상정보 조회(상세페이지)
+- 연구 범위, 종류, 책임기관, 특정 진료과, 임상시험 단계 별 필터링 하여 정보 조회
+
+### 수집한 임상정보 리스트 API
+- 전체 임상정보 리스트 조회
+- 페이지네이션 기능 포함
 
 ## 기술 스택
 - Back-End : python, django-rest-framework, sqlite3
