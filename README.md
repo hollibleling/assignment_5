@@ -79,7 +79,7 @@
 
 
 ## API 명세(request/response)
-  - https://documenter.getpostman.com/view/17229002/UVCBA4BT
+  - [Postman API Document]https://documenter.getpostman.com/view/17229002/UVCBA4BT
 
 ## 폴더 구조
 ```
